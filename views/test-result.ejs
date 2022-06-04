@@ -1,0 +1,31 @@
+<%-include ("./partials/top") %>
+<style>
+  .jumbotron {
+    background-image: url('/images/bg-light.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    padding: 0;
+  }
+  .jumbotron > div {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem 1rem;
+  }
+</style>
+
+<div class="jumbotron mb-0 jumbotron-fluid text-center text-white">
+  <div>
+    <div class="container">
+      <p class="mb-4" style="font-size: 1.4rem">DIAGNOSTICS REPORT</p>
+      <h1 style="font-size: 3.0rem"><%= test_result.toUpperCase() %></h1>
+      <p class="lead font-weight-bold"><%= med_text %></p>
+      <hr class="my-2">
+      <p style="font-size: 1.4rem">Want to know more on Hepatitis-B?</p>
+      <p class="lead">
+        <a class="btn btn-primary" href="/fact-book" role="button">View Hepatitis-B Fact Book</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<%-include ("./partials/bottom") %>

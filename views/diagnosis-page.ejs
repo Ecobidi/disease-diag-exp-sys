@@ -1,0 +1,56 @@
+<%-include ("./partials/top") %>
+<style>
+  .jumbotron {
+    background-image: url('/images/bg-dark.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    padding: 0;
+  }
+  .jumbotron > div {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem 1rem;
+  }
+</style>
+<div class="jumbotron jumbotron-fluid text-center text-white">
+  <div>
+    <div class="container">
+      <h1 class="display-4">Hepatitis-B Inference Quiz</h1>
+      <p style="width: 75%;" class="lead font-weight-normal mx-auto">Answer all the diagnosis questions below to enable the Expert System generate an accurate diagnositics report</p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div>
+    <h4 class="text-center mb-3">Answer As Accurately As Possible</h4>
+    <form action="/diagnosis" method="POST">
+      <div>
+        <table class="table table-striped">
+          <% symptomsKeys.forEach(sym => { %>
+          <tr>
+            <td><strong class="q"><%= sym.toUpperCase() %></strong></td>
+            <td>
+              <select name='<%= sym %>' class="form-control form-control-sm" required>
+                <option value=''>choose</option>
+                <% if (symptoms[sym].length == 0) { %>
+                  <option>YES</option>
+                  <option>NO</option>
+                <% } else { %>
+                  <% symptoms[sym].forEach(opt => { %>
+                    <option><%= opt.toUpperCase() %></option>
+                  <% }) %>
+                <% } %>
+              </select>
+            </td>
+          </tr>
+          <% }) %>
+        </table>
+      </div>
+      <div class="w-100 d-flex justity-content-center">
+        <button type="submit" class="btn btn-lg btn-primary d-inline-block mx-auto my-4">SUBMIT</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%-include ("./partials/bottom") %>
